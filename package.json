@@ -1,7 +1,7 @@
 {
-  "name": "react-university",
-  "version": "1.0.0",
-  "description": "Sample Application with React and the Lightning Design System",
+  "name": "nexellence",
+  "version": "1.0.1",
+  "description": "Web Application for an institute management",
   "engines": {
     "node": "4.2.1"
   },
@@ -10,7 +10,7 @@
     "webpack": "webpack",
     "start": "node server.js"
   },
-  "author": "Christophe Coenraets <ccoenraets@gmail.com> (http://coenraets.org/)",
+  "author": "luk3Sky",
   "license": "ISC",
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.3.13",

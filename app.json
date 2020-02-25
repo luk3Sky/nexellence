@@ -1,6 +1,6 @@
 {
-  "name": "React University",
+  "name": "Nexellence",
   "description": "Reference app built with React and the Lightning Design System",
-  "repository": "https://github.com/ccoenraets/react-university",
+  "repository": "https://github.com/luk3Sky/nexellence",
   "addons": ["heroku-postgresql:hobby-dev"]
 }
