@@ -1,10 +1,6 @@
-# React University
+# Nexellence 
 
-React University is a sample project demonstrating how to build applications with React, Node.js, and the Lightning Design System. React University is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
-
-Check out this video for a quick walkthrough:
-
-[![Video](http://img.youtube.com/vi/32Agr6QWmqU/0.jpg)](http://www.youtube.com/watch?v=32Agr6QWmqU)
+Nexellence is a smart educational institute managemanet system. It is built with React, Node.js, and the Lightning Design System. Nexellence is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
 
 The back-end is built with **Node.js** using a **Postgres** database. 
 
