@@ -36,3 +36,25 @@ CREATE TABLE IF NOT EXISTS teacher (
     pic VARCHAR(255),
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS period (
+    id VARCHAR(32) PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS course (
+    id VARCHAR(32) PRIMARY KEY,
+    code VARCHAR(20),
+    name  VARCHAR(200),
+    credits INTEGER,
+    period_id VARCHAR(32) REFERENCES period(id) ON DELETE CASCADE,
+    teacher_id VARCHAR(32) REFERENCES teacher(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS enrollment (
+    id VARCHAR(32) PRIMARY KEY,
+    course_id VARCHAR(32) REFERENCES course(id) ON DELETE CASCADE,
+    student_id VARCHAR(32) REFERENCES student(id) ON DELETE CASCADE
+);
+
+CREATE UNIQUE INDEX indx_enrollment ON enrollment (course_id, student_id);
