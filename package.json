@@ -23,11 +23,11 @@
   },
   "lint-staged": {
     "*.+(js|jsx)": [
-      "lint:fix",
+      "npm run lint:fix",
       "git add"
     ],
     "*.+(json|css|md)": [
-      "format",
+      "npm run format",
       "git add"
     ]
   },
