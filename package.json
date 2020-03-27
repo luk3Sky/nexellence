@@ -14,7 +14,7 @@
     "dev": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\""
   },
   "husky": {
     "hooks": {
@@ -22,14 +22,8 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": [
-      "npm run lint:fix",
-      "git add"
-    ],
-    "*.+(json|css|md)": [
-      "npm run format",
-      "git add"
-    ]
+    "*.+(js|jsx)": ["eslint --fix", "git add"],
+    "*.+(json|css|md)": ["prettier --write", "git add"]
   },
   "browserslist": [
     "> 1%",
