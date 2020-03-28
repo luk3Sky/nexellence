@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import React from 'react';
 import LinkedStateMixin from 'react-addons-linked-state-mixin';
 
@@ -54,8 +55,8 @@ export default React.createClass({
                                     <input className="slds-input" type="text" valueLink={this.linkState('city')}/>
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
-                                    <small className="slds-form-element__helper">State</small>
-                                    <input className="slds-input" type="text" valueLink={this.linkState('state')}/>
+                                    <small className="slds-form-element__helper">Province</small>
+                                    <input className="slds-input" type="text" valueLink={this.linkState('province')}/>
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
                                     <small className="slds-form-element__helper">ZIP Code</small>
