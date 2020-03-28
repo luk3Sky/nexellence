@@ -1,22 +1,23 @@
+/* eslint-disable no-console */
 "use strict";
 
 let fs = require('fs'),
     path = require('path'),
-    db = require('./pghelper');
+    db = require('./mysqlhelper.js');
 
-let filePath = path.join(__dirname, '../init.sql');
+let filePath = path.join(__dirname, '../mysql.init.sql');
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
     if (err) {
-        console.log(err);
+        console.error(err);
     } else {
         db.query(data)
             .then(function() {
-                console.log('Postgres tables successfully initialized') ;
+                console.log('MySQL tables successfully initialized') ;
             })
             .catch(function(error) {
-                console.log('Error initializing Postgres tables initialized');
-                console.log(error)
+                console.log('Error initializing MySQL tables');
+                console.error(error);
             })
     }
 

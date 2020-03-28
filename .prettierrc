@@ -1,0 +1,10 @@
+{
+  "plugins": ["plugin:prettier/recommended"],
+  "bracketSpacing": false,
+  "printWidth": 85,
+  "singleQuote": true,
+  "arrowParens": "always",
+  "semi": false,
+  "tabWidth": 4,
+  "trailingComma": "es5"
+}

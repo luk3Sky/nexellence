@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import React from 'react';
 import DataGrid from './components/DataGrid';
 
@@ -22,7 +23,7 @@ export default React.createClass({
                 <div header="Last Name" field="last_name" onLink={this.linkHandler}/>
                 <div header="Address" field="address"/>
                 <div header="City" field="city"/>
-                <div header="State" field="state"/>
+                <div header="Province" field="province"/>
             </DataGrid>
         );
     }
