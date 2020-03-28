@@ -1,6 +1,6 @@
 # Nexcellence
 
-Nexcellence is an Educational Institue CMS for managing student enrollments, courses and staff with React, Node.js, and the Lightning Design System. It is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
+Nexcellence is an Educational Institue CMS for managing student enrollments, courses and staff built with React, Node.js, and the Lightning Design System. It is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
 
 The back-end is built with **Node.js** using a **MySQL** database. 
 
@@ -45,5 +45,23 @@ Follow the instructions below if you prefer to install the application on your l
 ## Developer Environment
 
 The developer environment supports linting, styling with ESLint, Prettier, Husky and Lint-Staged configs so that every developer environment is in sync with a working stage which helps to keep consistency in check. 
+
+Follow the instructions below to run the developer environment:
+
+1. Type the following command to build the developer application:
+
+    ```
+    npm run webpack:dev
+    ```
+    
+    The project is written using ECMAScript 6 including ECMAScript 6 modules.
+
+2. Type the following command to start the dev server:
+    
+    ```
+    npm run dev
+    ```
+    
+3. Open a browser and access [http://localhost:5000](http://localhost:5000)
 
 **Caution! If a git commit fails, please don't force the commit instead of fixing the bug you already have.**
