@@ -1,6 +1,6 @@
 "use strict";
 
-let db = require('./pghelper');
+let db = require('./mysqlhelper');
 
 let findByStudent = (req, res, next) => {
 

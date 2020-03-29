@@ -55,6 +55,12 @@ CREATE TABLE IF NOT EXISTS enrollment (
     course_id       integer REFERENCES course(id) ON DELETE CASCADE,
     student_id      integer REFERENCES student(id) ON DELETE CASCADE
   );
+  
+CREATE TABLE IF NOT EXISTS user(
+	id INTEGER(32),
+	username VARCHAR(40) PRIMARY KEY,
+	password VARCHAR(20)
+);
 
 CREATE UNIQUE INDEX idx_enrollment ON enrollment (course_id, student_id);
 
