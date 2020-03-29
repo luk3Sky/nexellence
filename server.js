@@ -11,10 +11,33 @@ var express = require('express'),
 
 app.set('port', process.env.PORT || 5000);
 
+app.set('view engine','ejs');
 app.use(bodyParser.json());
 app.use(compression());
 
 app.use('/', express.static(__dirname + '/www'));
+
+////auth route//
+app.get("/home",function(req,res){
+    res.render("home");
+});
+app.get("/login",(req,res)=>{
+    res.render("login");
+});
+app.get("/register",(req,res)=>{
+    res.render("register");
+});
+app.post("/login",(req,res)=>{
+    res.send("login auth page");
+});
+app.post("/register",(req,res)=>{
+    res.send("register auth page");
+});
+
+
+
+
+
 
 app.get('/students', students.findAll);
 app.get('/students/:id', students.findById);
