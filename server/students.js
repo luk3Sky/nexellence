@@ -1,6 +1,6 @@
 "use strict";
 
-let db = require('./mysqlhelper');;
+let db = require('./mysqlhelper');
 
 let findAll = (req, res, next) => {
     let name = req.query.name;
@@ -9,10 +9,10 @@ let findAll = (req, res, next) => {
     if (name) {
         sql = `
             SELECT id, first_name || ' ' || last_name AS name FROM student
-            WHERE lower(first_name) || ' ' || lower(last_name) LIKE $1 ORDER BY last_name, first_name LIMIT 20`;
+            WHERE lower(first_name) || ' ' || lower(last_name) LIKE ? ORDER BY last_name, first_name LIMIT 20`;
         params.push("%" + name.toLowerCase() + "%");
     } else {
-        sql = `SELECT id, first_name, last_name, address, city, state FROM student ORDER BY last_update DESC LIMIT 20`;
+        sql = `SELECT id, first_name, last_name, address, city, province FROM student ORDER BY last_update DESC LIMIT 20`;
     }
     db.query(sql, params)
         .then(result => res.json(result))
@@ -21,7 +21,7 @@ let findAll = (req, res, next) => {
 
 let findById = (req, res, next) => {
     let id = req.params.id;
-    let sql = "SELECT * FROM student WHERE id=$1";
+    let sql = "SELECT * FROM student WHERE id=?";
     db.query(sql, [parseInt(id)])
         .then(students =>  res.json(students[0]))
         .catch(next);
@@ -31,13 +31,12 @@ let createItem = (req, res, next) => {
     let student = req.body;
     let sql = `
         INSERT INTO student
-            (first_name, last_name, address, city, state, zip, dob, phone, mobile_phone, email, pic)
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+            (first_name, last_name, address, city, province, zip, dob, phone, mobile_phone, email, pic)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?)
         RETURNING id`;
-    db.query(sql, [student.first_name, student.last_name, student.address, student.city, student.state, student.zip,
+    db.query(sql, [student.first_name, student.last_name, student.address, student.city, student.province, student.zip,
                    student.dob, student.phone, student.mobile_phone, student.email, student.pic])
         .then(result => {
-            console.log(result);
             res.json(result[0])
         })
         .catch(next);
@@ -45,9 +44,9 @@ let createItem = (req, res, next) => {
 
 let updateItem = (req, res, next) => {
     let student = req.body;
-    let sql = `UPDATE student SET first_name=$1, last_name=$2, address=$3, city=$4, state=$5, zip=$6, dob=$7, phone=$8,
-                mobile_phone=$9, email=$10, pic=$11, last_update=current_timestamp WHERE id=$12`;
-    db.query(sql, [student.first_name, student.last_name, student.address, student.city, student.state, student.zip,
+    let sql = `UPDATE student SET first_name=?, last_name=?, address=?, city=?, province=?, zip=?, dob=?, phone=?,
+                mobile_phone=?, email=?, pic=?, last_update=current_timestamp WHERE id=?`;
+    db.query(sql, [student.first_name, student.last_name, student.address, student.city, student.province, student.zip,
         student.dob, student.phone, student.mobile_phone, student.email, student.pic, student.id])
         .then(() => res.send({result: 'ok'}))
         .catch(next);
@@ -55,7 +54,7 @@ let updateItem = (req, res, next) => {
 
 let deleteItem = (req, res, next) => {
     let studentId = req.params.id;
-    db.query('DELETE FROM student WHERE id=$1', [studentId], true)
+    db.query('DELETE FROM student WHERE id=?', [studentId], true)
         .then(() =>res.send({result: 'ok'}))
         .catch(next);
 };

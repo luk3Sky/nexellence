@@ -44659,6 +44659,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	/* eslint-disable react/no-deprecated */
 	exports.default = _react2.default.createClass({
 	    displayName: 'StudentList',
 	    linkHandler: function linkHandler(student) {
@@ -44679,7 +44680,7 @@
 	            _react2.default.createElement('div', { header: 'Last Name', field: 'last_name', onLink: this.linkHandler }),
 	            _react2.default.createElement('div', { header: 'Address', field: 'address' }),
 	            _react2.default.createElement('div', { header: 'City', field: 'city' }),
-	            _react2.default.createElement('div', { header: 'State', field: 'state' })
+	            _react2.default.createElement('div', { header: 'Province', field: 'province' })
 	        );
 	    }
 	});
@@ -44774,7 +44775,8 @@
 	    value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-disable react/no-deprecated */
+	
 	
 	var _react = __webpack_require__(1);
 	
@@ -44892,9 +44894,9 @@
 	                                _react2.default.createElement(
 	                                    'small',
 	                                    { className: 'slds-form-element__helper' },
-	                                    'State'
+	                                    'Province'
 	                                ),
-	                                _react2.default.createElement('input', { className: 'slds-input', type: 'text', valueLink: this.linkState('state') })
+	                                _react2.default.createElement('input', { className: 'slds-input', type: 'text', valueLink: this.linkState('province') })
 	                            ),
 	                            _react2.default.createElement(
 	                                'label',
@@ -45352,7 +45354,7 @@
 	                                _react2.default.createElement('br', null),
 	                                student.city,
 	                                ' ',
-	                                student.state,
+	                                student.province,
 	                                ' ',
 	                                student.zip
 	                            )
@@ -45389,7 +45391,7 @@
 	            _react2.default.createElement(_StudentEnrollmentCard2.default, { student: student, onNew: this.newCourseHandler })
 	        );
 	    }
-	});
+	}); /* eslint-disable react/no-deprecated */
 
 /***/ }),
 /* 389 */
@@ -45948,7 +45950,8 @@
 	    value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-disable react/no-deprecated */
+	
 	
 	var _react = __webpack_require__(1);
 	
@@ -46066,9 +46069,9 @@
 	                                _react2.default.createElement(
 	                                    'small',
 	                                    { className: 'slds-form-element__helper' },
-	                                    'State'
+	                                    'Province'
 	                                ),
-	                                _react2.default.createElement('input', { className: 'slds-input', type: 'text', valueLink: this.linkState('state') })
+	                                _react2.default.createElement('input', { className: 'slds-input', type: 'text', valueLink: this.linkState('province') })
 	                            ),
 	                            _react2.default.createElement(
 	                                'label',

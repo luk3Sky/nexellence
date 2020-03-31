@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import React from 'react';
 
 import moment from 'moment';
@@ -23,7 +24,7 @@ export default React.createClass({
                             </dt>
                             <dd>
                                 <p className="slds-text-body--regular slds-truncate" title="">{student.address}<br/>
-                                    {student.city} {student.state} {student.zip}
+                                    {student.city} {student.province} {student.zip}
                                 </p>
                             </dd>
                         </dl>
