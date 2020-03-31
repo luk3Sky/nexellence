@@ -6,13 +6,16 @@ var express = require('express'),
     enrollments = require('./server/enrollments'),
     teachers = require('./server/teachers'),
     periods = require('./server/periods'),
+    auth    =require('./server/auth'),
     sqlinit = require('./server/sqlinit'),
+    bcrypt  =require("bcrypt"),
     app = express();
 
 app.set('port', process.env.PORT || 5000);
 
 app.set('view engine','ejs');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(compression());
 
 app.use('/', express.static(__dirname + '/www'));
@@ -30,8 +33,16 @@ app.get("/register",(req,res)=>{
 app.post("/login",(req,res)=>{
     res.send("login auth page");
 });
-app.post("/register",(req,res)=>{
-    res.send("register auth page");
+app.post("/register",async (req,res)=>{
+    try{
+        console.log(req.body.username);
+        const hashedPassword=await bcrypt.hash(req.body.password,10);
+        console.log(hashedPassword);
+        auth.addUser(req.body.username,hashedPassword);
+        res.redirect("/login"); 
+    }catch{
+        res.redirect("/register");
+    }
 });
 
 
