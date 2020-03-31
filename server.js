@@ -6,6 +6,9 @@ var express = require('express'),
     enrollments = require('./server/enrollments'),
     teachers = require('./server/teachers'),
     periods = require('./server/periods'),
+    express  =require('express'),
+    passport=require('passport'),
+    LocalStrategy=require('passport-local')
     auth    =require('./server/auth'),
     sqlinit = require('./server/sqlinit'),
     bcrypt  =require("bcrypt"),
@@ -18,7 +21,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(compression());
 
+app.use(require("express-session")({
+    secret:"auth using passport",
+    resave:false,
+    saveUninitialized:false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', express.static(__dirname + '/www'));
+
+
+passport.serializeUser((user,done)=>done(null,user.id));
+passport.deserializeUser((id,done)=>{
+    connection.query("select * from user where id = "+ id, function (err, rows){
+        done(err, rows[0]);
+    });
+});
+
 
 ////auth route//
 app.get("/home",function(req,res){

@@ -19,9 +19,12 @@
     "compression": "^1.6.1",
     "ejs": "^3.0.1",
     "express": "^4.13.4",
+    "express-session": "^1.17.0",
     "method-override": "^2.3.5",
     "moment": "^2.11.2",
     "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^4.4.4"
   },
