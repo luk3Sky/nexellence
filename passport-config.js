@@ -1,20 +1,29 @@
+"use strict";
+
+let db = require('./server/mysqlhelper');
 const LocalStrategy=require("passport-local").Strategy;
 const bcrypt=require("bcrypt");
 
-function initialize(passport,getUserByUsername){
+function initialize(passport){
     const authenticateUser=async (username,password,done) =>{
-        const user=await getUserByUsername(username);
-        console.log(user);
+        var user=null;
+        let sql="SELECT * FROM user WHERE username = ?";
+        user=await db.query(sql,[username]);
+        user=user[0];
         if(user==null){
-            return done(null,false,{message:'no user with that username'})
+            console.log("User null ");
+            return done(null,false)
         }
         try{
             if(await bcrypt.compare(password,user.password)){
+                console.log("Done auth "+user);
                 return done(null,user)
             }else{
-                return done(null,false,{message:'Password incorrect'})
+                console.log("Wrong password");
+                return done(null,false)
             }
         }catch(e){
+            console.log("something wrong sql fetch");
              return done(e)
         }
     }
