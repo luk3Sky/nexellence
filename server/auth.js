@@ -22,6 +22,7 @@ let findById=(id,done)=>{
     db.query(sql,[id])
     .then(user=>{
         console.log("Deserialize user "+user[0]);
+        var err=null;
         done(err, user[0]);
     })
     .catch(()=>null);
