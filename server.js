@@ -35,7 +35,10 @@ app.use(passport.session());
 initializePassport(passport);
 
 
-passport.serializeUser((user,done)=>done(null,user.id));
+passport.serializeUser((user,done)=>{
+    console.log("SerializeUser "+user.username);////testing
+    done(null,user.id)
+});
 passport.deserializeUser(auth.findById);
 
 
@@ -55,7 +58,7 @@ app.get("/register",(req,res)=>{
 app.post("/login",passport.authenticate('local',{
     successRedirect:'/home',
     failureRedirect:'/login',
-    failureFlash:true
+    failureFlash:false   ////allow flash msg
 }));
 
 
@@ -69,6 +72,11 @@ app.post("/register",async (req,res)=>{
     }catch{
         res.redirect("/register");
     }
+});
+
+app.get("/logout",(req,res)=>{
+    req.logout();
+    res.redirect("/login");
 });
 
 
