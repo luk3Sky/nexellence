@@ -14,12 +14,15 @@ var express = require('express'),
     bcrypt  =require("bcrypt"),
     app = express();
 
+const initializePassport=require("./passport-config");
+
 app.set('port', process.env.PORT || 5000);
 
 app.set('view engine','ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(compression());
+app.use('/', express.static(__dirname + '/www'));
 
 app.use(require("express-session")({
     secret:"auth using passport",
@@ -29,15 +32,14 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', express.static(__dirname + '/www'));
+initializePassport(passport);
 
 
-passport.serializeUser((user,done)=>done(null,user.id));
-passport.deserializeUser((id,done)=>{
-    connection.query("select * from user where id = "+ id, function (err, rows){
-        done(err, rows[0]);
-    });
+passport.serializeUser((user,done)=>{
+    console.log("SerializeUser "+user.username);////testing
+    done(null,user.id)
 });
+passport.deserializeUser(auth.findById);
 
 
 ////auth route//
@@ -50,9 +52,16 @@ app.get("/login",(req,res)=>{
 app.get("/register",(req,res)=>{
     res.render("register");
 });
-app.post("/login",(req,res)=>{
-    res.send("login auth page");
-});
+// app.post("/login",(req,res)=>{
+//     res.send("login auth page");
+// });
+app.post("/login",passport.authenticate('local',{
+    successRedirect:'/home',
+    failureRedirect:'/login',
+    failureFlash:false   ////allow flash msg
+}));
+
+
 app.post("/register",async (req,res)=>{
     try{
         console.log(req.body.username);
@@ -65,8 +74,18 @@ app.post("/register",async (req,res)=>{
     }
 });
 
+app.get("/logout",(req,res)=>{
+    req.logout();
+    res.redirect("/login");
+});
 
 
+///testing ///
+app.get("/userid",(req,res)=>{
+    const val=auth.findUser('smith');
+    console.log(val);
+    res.send(val);
+})
 
 
 
