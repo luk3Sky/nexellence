@@ -43,26 +43,23 @@ passport.deserializeUser(auth.findById);
 
 
 ////auth route//
-app.get("/home",function(req,res){
+app.get("/home",checkAuthenticated,function(req,res){
     res.render("home");
 });
-app.get("/login",(req,res)=>{
+app.get("/login",checkNotAuthenticated,(req,res)=>{
     res.render("login");
 });
-app.get("/register",(req,res)=>{
+app.get("/register",checkNotAuthenticated,(req,res)=>{
     res.render("register");
 });
-// app.post("/login",(req,res)=>{
-//     res.send("login auth page");
-// });
-app.post("/login",passport.authenticate('local',{
+app.post("/login",checkNotAuthenticated,passport.authenticate('local',{
     successRedirect:'/home',
     failureRedirect:'/login',
     failureFlash:false   ////allow flash msg
 }));
 
 
-app.post("/register",async (req,res)=>{
+app.post("/register",checkNotAuthenticated,async (req,res)=>{
     try{
         console.log(req.body.username);
         const hashedPassword=await bcrypt.hash(req.body.password,10);
@@ -79,13 +76,6 @@ app.get("/logout",(req,res)=>{
     res.redirect("/login");
 });
 
-
-///testing ///
-app.get("/userid",(req,res)=>{
-    const val=auth.findUser('smith');
-    console.log(val);
-    res.send(val);
-})
 
 
 
@@ -123,3 +113,18 @@ app.use(function(err, req, res, next) {
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+function checkAuthenticated(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/login');
+}
+
+function checkNotAuthenticated(req,res,next){
+    if(req.isAuthenticated()){
+       return res.redirect('/home');
+    }
+    next();
+}
