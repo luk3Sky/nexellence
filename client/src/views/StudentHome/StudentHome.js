@@ -1,33 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import * as StudentService from './services/StudentService';
+import * as StudentService from '../../services/StudentService';
 
-import {HomeHeader} from './components/PageHeader';
+import { HomeHeader } from '../../components/PageHeader';
 import StudentList from './StudentList';
 import StudentFormWindow from './StudentFormWindow';
 
-export default React.createClass({
+class StudentHome extends Component{
 
-    getInitialState() {
-        return {students: []};
-    },
+    constructor(props){
+        super(props);
+        this.state = {
+            students: [],
+            addingStudent: false
+        }
+    }
 
     componentDidMount() {
         StudentService.findAll().then(students => this.setState({students}));
-    },
+    }
 
-    newHandler() {
-        this.setState({addingStudent:true});
-    },
+    newHandler = () => {
+        this.setState({
+            addingStudent:true
+        });
+    }
 
-    savedHandler(student) {
+    savedHandler = (student) => {
         this.setState({addingStudent: false});
         window.location.hash = "#student/" + student.id;
-    },
+    }
 
-    cancelHandler() {
+    cancelHandler = () => {
         this.setState({addingStudent: false});
-    },
+    }
 
     render() {
         return (
@@ -45,5 +51,6 @@ export default React.createClass({
             </div>
         );
     }
+}
 
-});
+export default StudentHome;

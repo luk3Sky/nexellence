@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import Spinner from './components/Spinner';
-import Toast from './components/Toast';
-import {Icon} from './components/Icons';
+import Spinner from '../../components/Spinner';
+import Toast from '../../components/Toast';
+import { Icon } from '../../components/Icons';
 import StudentSearchBox from './StudentSearchBox';
 
-export default React.createClass({
+export default class Shell extends Component {
 
-    selectHandler(index, value, label) {
+    selectHandler = (index, value, label) => {
         window.location.hash = "student/" + value;
-    },
+    }
 
     render() {
         return (
@@ -30,4 +30,4 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
