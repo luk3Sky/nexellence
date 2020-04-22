@@ -7,14 +7,18 @@
     "es6": true
   },
   "plugins": ["import", "react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2018,
     "ecmaFeatures": {
-      "modules":true,
-      "arrowFunctions":true,
-      "classes":true,
+      "modules": true,
+      "arrowFunctions": true,
+      "classes": true,
       "jsx": true,
       "allowImportExportEverywhere": false
     },

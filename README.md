@@ -6,7 +6,7 @@ Check out this video for a quick walkthrough:
 
 [![Video](http://img.youtube.com/vi/32Agr6QWmqU/0.jpg)](http://www.youtube.com/watch?v=32Agr6QWmqU)
 
-The back-end is built with **Node.js** using a **Postgres** database. 
+The back-end is built with **Node.js** using a **Postgres** database.
 
 ## Automatic Deployment to Heroku
 
@@ -24,7 +24,7 @@ Follow the instructions below if you prefer to install the application on your l
 
 1. Install the latest version of [Node.js](https://nodejs.org). This application requires Node.js 4.x.
 
-1. Install [Postgres](http://www.postgresql.org/) locally 
+1. Install [Postgres](http://www.postgresql.org/) locally
 
 1. Start Postgres and create a database called **university**.
 
@@ -43,15 +43,15 @@ Follow the instructions below if you prefer to install the application on your l
     ```
     npm run webpack
     ```
-    
+
     The project is written using ECMAScript 6 including ECMAScript 6 modules.
 
 1. Type the following command to start the server:
-    
+
     ```
     npm start
     ```
-    
+
     The database is automatically populated
-    
+
 1. Open a browser and access [http://localhost:5000](http://localhost:5000)

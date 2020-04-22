@@ -8,6 +8,7 @@ package.json
 *.toml
 docker
 .editorconfig
+*.lock.json
 Dockerfile*
 .gitignore
 .prettierignore

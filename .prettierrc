@@ -1,5 +1,4 @@
 {
-  "plugins": ["plugin:prettier/recommended"],
   "bracketSpacing": false,
   "printWidth": 85,
   "singleQuote": true,
