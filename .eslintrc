@@ -6,11 +6,23 @@
     "jest": true,
     "es6": true
   },
-  "plugins": ["import"],
+  "plugins": ["import", "react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
+    "sourceType": "module",
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaFeatures": {
+      "modules":true,
+      "arrowFunctions":true,
+      "classes":true,
+      "jsx": true,
+      "allowImportExportEverywhere": false
+    },
+  },
+  "settings": {
+    "react": {
+      "version": "16.13.1"
+    }
   },
   "rules": {
     "no-console": "warn",
