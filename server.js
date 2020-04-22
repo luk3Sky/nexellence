@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 var express = require('express'),
     bodyParser = require('body-parser'),
     compression = require('compression'),
