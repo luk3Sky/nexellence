@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS enrollment (
 CREATE TABLE IF NOT EXISTS user(
 	id INTEGER(32),
 	username VARCHAR(40) PRIMARY KEY,
-	password VARCHAR(20)
+	password VARCHAR(200)
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS indx_enrollment ON enrollment (course_id, student_id);
@@ -74,6 +74,7 @@ INSERT INTO period (id, name) VALUES
 (2,'Spring 2015'),
 (3,'Fall 2015'),
 (4,'Spring 2016');
+
 
 INSERT INTO student (first_name, last_name, address, city, province, zip, dob, phone, mobile_phone, email, pic, registration) VALUES
 ('Camila', 'Martinez', '18 Henry st', 'Cambridge', 'MA', '01742', '1995/09/07', '617-985-6955', '617-666-5555', 'cmartinez@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/camila_martinez.jpg', '2012/07/14'),

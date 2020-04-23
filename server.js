@@ -64,7 +64,7 @@ app.post("/register",checkNotAuthenticated,async (req,res)=>{
         console.log(req.body.username);
         const hashedPassword=await bcrypt.hash(req.body.password,10);
         console.log(hashedPassword);
-        auth.addUser(req.body.username,hashedPassword);
+        auth.addUser(parseInt(req.body.id),req.body.username,hashedPassword);
         res.redirect("/login"); 
     }catch{
         res.redirect("/register");

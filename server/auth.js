@@ -2,9 +2,9 @@
 
 let db = require('./mysqlhelper');
 
-let addUser=(username,password)=>{
-    let sql="INSERT INTO user (username,password) VALUES (?,?)";
-    db.query(sql,[username,password])
+let addUser=(id,username,password)=>{
+    let sql="INSERT INTO user (id,username,password) VALUES (?,?,?)";
+    db.query(sql,[id,username,password])
     .then(result=>console.log("success"))
     .catch(()=>console.log("err"));
 }
