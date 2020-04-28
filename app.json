@@ -1,6 +1,6 @@
 {
-  "name": "Nexellence",
-  "description": "Reference app built with React and the Lightning Design System",
-  "repository": "https://github.com/luk3Sky/nexellence",
-  "addons": ["heroku-postgresql:hobby-dev"]
+    "name": "Nexellence",
+    "description": "Reference app built with React and the Lightning Design System",
+    "repository": "https://github.com/luk3Sky/nexellence",
+    "addons": ["heroku-postgresql:hobby-dev"]
 }

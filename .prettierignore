@@ -1,6 +1,10 @@
 **/*.svg
 build
 package.json
+**/public/assets
+*.md
+*.sql
+*.min.css
 .dockerignore
 .DS_Store
 .eslintignore
