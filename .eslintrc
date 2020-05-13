@@ -1,38 +1,26 @@
 {
+  "extends": [
+    "prettier"
+  ],
+  "settings": {
+  },
   "env": {
+    "browser": true,
     "node": true,
     "commonjs": true,
-    "browser": true,
-    "jest": true,
     "es6": true
   },
-  "plugins": ["import", "react"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "prettier/react"
+  "plugins": [
+    "import",
+    "prettier"
   ],
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2018,
-    "ecmaFeatures": {
-      "modules": true,
-      "arrowFunctions": true,
-      "classes": true,
-      "jsx": true,
-      "allowImportExportEverywhere": false
-    }
-  },
-  "settings": {
-    "react": {
-      "version": "16.13.1"
-    }
-  },
   "rules": {
+    "import/first": 2,
     "no-console": "warn",
     "no-eval": "error",
     "no-unused-vars": "warn",
-    "import/first": "error"
+    "no-plusplus": "error",
+    "no-duplicate-imports": "error",
+    "semi": 1
   }
 }

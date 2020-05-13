@@ -1,0 +1,14 @@
+{
+    "eslint.enable": true,
+    "eslint.packageManager": "npm",
+    "eslint.workingDirectories": [
+        {
+            "directory": "./client",
+            "changeProcessCWD": true
+        },
+        {
+            "directory": "/",
+            "changeProcessCWD": true
+        }
+    ]
+}
