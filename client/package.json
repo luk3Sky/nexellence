@@ -40,7 +40,6 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-flowtype": "^4.7.0",
