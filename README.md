@@ -1,6 +1,6 @@
 # Nexcellence
 
-Nexcellence is a Smart Educational Institue CMS for managing student enrollments, courses and staff built with React, Node.js, and the Lightning Design System. It is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
+Nexcellence is a Smart Educational Institute CMS for managing student enrollments, courses and staff built with React, Node.js, and the Lightning Design System. It is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
 
 The back-end is built with **Node.js** using a **MySQL** database. 
 
