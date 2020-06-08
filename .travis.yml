@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+    - 12
+services:
+    - mysql
+script:
+    - npm run install:full
+    - npm run heroku-postbuild

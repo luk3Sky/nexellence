@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/luk3Sky/nexellence.svg?branch=client-react-dev)](https://travis-ci.org/luk3Sky/nexellence)
+
 # Nexellence 
 
 Nexellence is a smart educational institute managemanet system. It is built with React, Node.js, and the Lightning Design System. Nexellence is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
