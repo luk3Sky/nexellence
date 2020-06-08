@@ -4,5 +4,4 @@ node_js:
 services:
     - mysql
 script:
-    - npm run install:full
     - npm run heroku-postbuild
