@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
 import * as StudentService from 'services/StudentService';
-
 import { HomeHeader } from 'components/Headers/PageHeader';
 import StudentList from './StudentList';
-import StudentFormWindow from './StudentFormWindow';
+import StudentFormWindow from './StudentForm/StudentFormWindow';
 
 class StudentHome extends Component {
     constructor(props) {
@@ -35,6 +34,7 @@ class StudentHome extends Component {
     };
 
     render() {
+        const { addingStudent, students } = this.state;
         return (
             <div>
                 <HomeHeader
@@ -42,13 +42,13 @@ class StudentHome extends Component {
                     title="Recent Students"
                     newLabel="New Student"
                     actions={[{ value: 'new', label: 'New Student' }]}
-                    itemCount={this.state.students.length}
+                    itemCount={students.length}
                     views={[{ id: 1, name: 'Recent Students' }]}
                     viewId="1"
                     onNew={this.newHandler}
                 />
-                <StudentList students={this.state.students} />
-                {this.state.addingStudent ? (
+                <StudentList students={students} />
+                {addingStudent ? (
                     <StudentFormWindow
                         onSaved={this.savedHandler}
                         onCancel={this.cancelHandler}

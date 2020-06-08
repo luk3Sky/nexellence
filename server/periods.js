@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 let db = require('./mysqlhelper');
 
-let findAll  = (req, res, next) => {
+let findAll = (req, res, next) => {
     let name = req.query.name;
-    let sql = "SELECT id, name FROM period ORDER BY id DESC";
+    let sql = 'SELECT id, name FROM period ORDER BY id DESC';
     db.query(sql)
-        .then(result => res.json(result))
+        .then((result) => res.json(result))
         .catch(next);
 };
 

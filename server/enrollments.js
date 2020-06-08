@@ -1,9 +1,8 @@
-"use strict";
+'use strict';
 
 let db = require('./mysqlhelper');
 
 let findByStudent = (req, res, next) => {
-
     let studentId = req.params.id;
     let periodId = req.query.periodId;
 
@@ -18,17 +17,15 @@ let findByStudent = (req, res, next) => {
         INNER JOIN course AS c ON e.course_id=c.id
         INNER JOIN teacher AS t ON c.teacher_id = t.id
         INNER JOIN period AS p ON c.period_id = p.id
-        WHERE student_id=? ${periodId ? "AND period_id=?" : ""}
+        WHERE student_id=? ${periodId ? 'AND period_id=?' : ''}
         ORDER BY c.period_id DESC, c.code`;
 
     db.query(sql, params)
-        .then(result => res.json(result))
+        .then((result) => res.json(result))
         .catch(next);
-
 };
 
 let findByCourse = (req, res, next) => {
-
     let courseId = req.params.id;
 
     let sql = `
@@ -39,23 +36,22 @@ let findByCourse = (req, res, next) => {
         ORDER BY first_name, last_name`;
 
     db.query(sql, [courseId])
-        .then(result => res.json(result))
+        .then((result) => res.json(result))
         .catch(next);
-
 };
 
 let createItem = (req, res, next) => {
     let enrollment = req.body;
     let sql = `INSERT INTO enrollment (course_id, student_id) VALUES (?,?)`;
     db.query(sql, [enrollment.course_id, enrollment.student_id])
-        .then(result => res.send({result: "ok", ...result}))
+        .then((result) => res.send({ result: 'ok', result }))
         .catch(next);
 };
 
 let deleteItem = (req, res, next) => {
     let enrollmentId = req.params.id;
     db.query('DELETE FROM enrollment WHERE id=?', [enrollmentId], true)
-        .then(() => res.send({result: 'ok'}))
+        .then(() => res.send({ result: 'ok' }))
         .catch(next);
 };
 

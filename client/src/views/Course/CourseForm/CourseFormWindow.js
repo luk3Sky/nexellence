@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import StudentForm from './StudentForm';
+import React, { Component, createRef } from 'react';
+import CourseForm from './CourseForm';
 
-export default class StudentFormWindow extends Component {
+class CourseFormWindow extends Component {
+    constructor(props) {
+        super(props);
+        this.form = createRef();
+    }
+
     saveHandler() {
-        this.refs.form.save();
+        this.form.current.save();
     }
 
     render() {
@@ -16,9 +21,7 @@ export default class StudentFormWindow extends Component {
                 >
                     <div className="slds-modal__container">
                         <div className="slds-modal__header">
-                            <h2 className="slds-text-heading--medium">
-                                New Student
-                            </h2>
+                            <h2 className="slds-text-heading--medium">New Course</h2>
                             <button
                                 type="button"
                                 className="slds-button slds-modal__close"
@@ -30,8 +33,11 @@ export default class StudentFormWindow extends Component {
                                 <span className="slds-assistive-text">Close</span>
                             </button>
                         </div>
-                        <div className="slds-modal__content">
-                            <StudentForm ref="form" onSaved={this.props.onSaved} />
+                        <div
+                            className="slds-modal__content"
+                            style={{ overflow: 'visible' }}
+                        >
+                            <CourseForm ref="form" onSaved={this.props.onSaved} />
                         </div>
 
                         <div className="slds-modal__footer">
@@ -57,3 +63,5 @@ export default class StudentFormWindow extends Component {
         );
     }
 }
+
+export default CourseFormWindow;

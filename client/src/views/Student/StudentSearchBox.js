@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import * as StudentService from 'services/StudentService';
-
 import SearchBox from 'components/SearchBox/SearchBox';
 
 class StudentSearchBox extends Component {
@@ -21,15 +20,22 @@ class StudentSearchBox extends Component {
     };
 
     render() {
+        const { students } = this.state;
+        const { placeholder, onSelect } = this.props;
         return (
             <SearchBox
-                data={this.state.students}
-                placeholder={this.props.placeholder}
+                data={students}
+                placeholder={placeholder}
                 onKeyChange={this.keyChangeHandler}
-                onSelect={this.props.onSelect}
+                onSelect={onSelect}
             />
         );
     }
 }
+
+StudentSearchBox.propTypes = {
+    placeholder: PropTypes.string.isRequired,
+    onSelect: PropTypes.func.isRequired
+};
 
 export default StudentSearchBox;

@@ -1,19 +1,20 @@
 import React from 'react';
 
-import StudentForm from './StudentForm';
+import TeacherForm from './TeacherForm';
 
-const studentFormWrapper = (props, refs) => {
+const teacherFormWrapper = (props) => {
+    let refs;
     const saveHandler = () => {
         refs.form.save();
     };
 
     const savedHandler = () => {
-        window.location.hash = `#student/${props.student.id}`;
+        window.location.hash = `#teacher/${props.teacher.id}`;
     };
 
     return (
         <div className="slds-m-around--medium">
-            <StudentForm ref="form" student={props.student} onSaved={savedHandler} />
+            <TeacherForm ref="form" teacher={props.teacher} onSaved={savedHandler} />
             <button
                 type="button"
                 className="slds-button slds-button--neutral slds-button--brand slds-m-around--small"
@@ -25,4 +26,4 @@ const studentFormWrapper = (props, refs) => {
     );
 };
 
-export default studentFormWrapper;
+export default teacherFormWrapper;

@@ -1,7 +1,8 @@
-/* eslint-disable react/no-deprecated */
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import * as StudentService from '../../services/StudentService';
+import * as StudentService from 'services/StudentService';
 
 class StudentForm extends Component {
     constructor(props) {
@@ -21,21 +22,33 @@ class StudentForm extends Component {
         };
     }
 
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
         const { student } = props;
         this.setState({ ...student });
     }
 
     save = () => {
-        const saveItem = this.state.id
-            ? StudentService.updateItem
-            : StudentService.createItem;
+        const { id } = this.state;
+        const { onSaved } = this.props;
+        const saveItem = id ? StudentService.updateItem : StudentService.createItem;
         saveItem(this.state).then((savedStudent) => {
-            if (this.props.onSaved) this.props.onSaved(savedStudent);
+            if (onSaved) onSaved(savedStudent);
         });
     };
 
     render() {
+        const {
+            first_name,
+            last_name,
+            address,
+            city,
+            province,
+            zip,
+            mobile_phone,
+            phone,
+            email,
+            dob
+        } = this.state;
         return (
             <div className="slds-form--stacked slds-grid slds-wrap">
                 <div className="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
@@ -50,7 +63,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.first_name}
+                                value={first_name}
                             />
                         </div>
                     </div>
@@ -65,7 +78,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.last_name}
+                                value={last_name}
                             />
                         </div>
                     </div>
@@ -80,7 +93,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.address}
+                                        value={address}
                                     />
                                 </label>
                             </div>
@@ -92,7 +105,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.city}
+                                        value={city}
                                     />
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
@@ -102,7 +115,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.province}
+                                        value={province}
                                     />
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
@@ -112,7 +125,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.zip}
+                                        value={zip}
                                     />
                                 </label>
                             </div>
@@ -131,7 +144,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.mobile_phone}
+                                value={mobile_phone}
                             />
                         </div>
                     </div>
@@ -146,7 +159,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.phone}
+                                value={phone}
                             />
                         </div>
                     </div>
@@ -161,7 +174,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.email}
+                                value={email}
                             />
                         </div>
                     </div>
@@ -173,11 +186,7 @@ class StudentForm extends Component {
                             Date of Birth
                         </label>
                         <div className="slds-form-element__control">
-                            <input
-                                className="slds-input"
-                                type="text"
-                                value={this.state.dob}
-                            />
+                            <input className="slds-input" type="text" value={dob} />
                         </div>
                     </div>
                 </div>
@@ -185,5 +194,11 @@ class StudentForm extends Component {
         );
     }
 }
+
+StudentForm.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
+    student: PropTypes.object.isRequired,
+    onSaved: PropTypes.func.isRequired
+};
 
 export default StudentForm;
