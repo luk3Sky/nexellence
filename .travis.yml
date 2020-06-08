@@ -3,3 +3,7 @@ node_js:
     - 12
 services:
     mysql
+scripts:
+    npm install:full
+    npm run heroku-postbuild
+    npm start
