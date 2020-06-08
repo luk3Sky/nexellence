@@ -3,6 +3,7 @@ let pendingRequests = 0;
 function toQueryString(obj) {
     const parts = [];
     let i;
+    // eslint-disable-next-line no-restricted-syntax
     for (i in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, i) && obj[i]) {
             parts.push(`${encodeURIComponent(i)}=${encodeURIComponent(obj[i])}`);
@@ -22,7 +23,7 @@ function request(obj) {
 
         xhr.onreadystatechange = function onStateChange() {
             if (xhr.readyState === 4) {
-                pendingRequests-=1;
+                pendingRequests -= 1;
                 if (pendingRequests === 0) {
                     document.dispatchEvent(new Event('stopWaiting'));
                 }
@@ -42,7 +43,7 @@ function request(obj) {
             xhr.setRequestHeader('Content-Type', obj.contentType);
         }
         xhr.send(obj.data ? JSON.stringify(obj.data) : undefined);
-        pendingRequests+=1;
+        pendingRequests += 1;
         if (pendingRequests === 1) {
             document.dispatchEvent(new Event('startWaiting'));
         }
