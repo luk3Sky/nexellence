@@ -1,6 +1,5 @@
 /* eslint-disable react/no-deprecated */
 import React from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // import StudentEnrollmentCard from './StudentEnrollmentCard';
@@ -71,21 +70,6 @@ const studentView = (props) => {
             {/* <StudentEnrollmentCard student={student} onNew={newCourseHandler} /> */}
         </div>
     );
-};
-
-studentView.defaultProps = {
-    student: {}
-};
-
-studentView.propTypes = {
-    student: {
-        pic: PropTypes.string.isRequired,
-        address: PropTypes.string.isRequired,
-        city: PropTypes.string.isRequired,
-        province: PropTypes.string.isRequired,
-        zip: PropTypes.number.isRequired,
-        registration: PropTypes.date.isRequired
-    }
 };
 
 export default studentView;

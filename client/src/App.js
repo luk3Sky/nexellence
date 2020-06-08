@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, IndexRoute } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
 import StudentRecord from 'views/Student/StudentRecord';
@@ -23,28 +23,30 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Route path="/" component={Shell}>
-                    <Route component={StudentHome} />
-                    <Route path="student" component={StudentRecord}>
-                        <Route path=":studentId" component={studentView} />
+                <Switch>
+                    <Route exact path="/" component={StudentHome} />
+                    <Route exact path="/student" component={StudentRecord}>
+                        <Route path="/:studentId" component={studentView} />
                         <Route
-                            path=":studentId/edit"
+                            path="/:studentId/edit"
                             component={studentFormWrapper}
                         />
                     </Route>
-                    <Route path="courses" component={CourseHome} />
-                    <Route path="course" component={CourseRecord}>
-                        <Route path=":courseId" component={courseView} />
-                        <Route path=":courseId/edit" component={CourseFormWrapper} />
+                    <Route path="/courses" component={CourseHome} />
+                    <Route path="/course" component={CourseRecord}>
+                        <Route path="/:courseId" component={courseView} />
+                        <Route path="/:courseId/edit" component={CourseFormWrapper} />
                     </Route>
-                    <Route path="teachers" component={TeacherHome} />
-                    <Route path="teacher" component={TeacherRecord}>
-                        <Route path=":teacherId" component={teacherView} />
+                    <Route path="/teachers" component={TeacherHome} />
+                    <Route path="/teacher" component={TeacherRecord}>
+                        <Route path="/:teacherId" component={teacherView} />
                         <Route
-                            path=":teacherId/edit"
+                            path="/:teacherId/edit"
                             component={TeacherFormWrapper}
                         />
                     </Route>
                     <Route path="*" component={StudentHome} />
+                </Switch>
                 </Route>
             </BrowserRouter>
             {/* <header className="App-header">
