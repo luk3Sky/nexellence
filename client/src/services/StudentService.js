@@ -1,15 +1,15 @@
 import * as rest from './rest';
 
-let url = "/students";
+const url = 'http://localhost:5000/students';
 
-export let findAll = sort => rest.get(url, {sort});
+export const findAll = (sort) => rest.get(url, { sort });
 
-export let findByName = name => rest.get(url, {name});
+export const findByName = (name) => rest.get(url, { name });
 
-export let findById = id => rest.get(url + "/" + id);
+export const findById = (id) => rest.get(`${url}/${id}`);
 
-export let createItem = student => rest.post(url, student);
+export const createItem = (student) => rest.post(url, student);
 
-export let updateItem = student => rest.put(url, student);
+export const updateItem = (student) => rest.put(url, student);
 
-export let deleteItem = id => rest.del(url + "/" + id);
+export const deleteItem = (id) => rest.del(`${url}/${id}`);
