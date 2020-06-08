@@ -45,6 +45,7 @@
     "body-parser": "^1.14.2",
     "compression": "^1.6.1",
     "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
     "express": "^4.13.4",
     "method-override": "^2.3.5",
     "moment": "^2.11.2",

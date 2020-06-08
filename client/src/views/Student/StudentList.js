@@ -1,8 +1,11 @@
 /* eslint-disable react/no-deprecated */
 import React from 'react';
+import PropTypes from 'prop-types';
 import DataGrid from 'components/DataGrid/DataGrid';
 
 const studentList = (props) => {
+    const { students } = props;
+
     const linkHandler = (student) => {
         window.location.hash = `#student/${student.id}`;
     };
@@ -17,7 +20,7 @@ const studentList = (props) => {
     };
 
     return (
-        <DataGrid data={props.students}>
+        <DataGrid data={students}>
             <div header="First Name" field="first_name" onLink={linkHandler} />
             <div header="Last Name" field="last_name" onLink={linkHandler} />
             <div header="Address" field="address" />
@@ -25,6 +28,17 @@ const studentList = (props) => {
             <div header="Province" field="province" />
         </DataGrid>
     );
+};
+
+studentList.defaultProps = {
+    students: []
+};
+
+studentList.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
+    students: PropTypes.array,
+    onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired
 };
 
 export default studentList;

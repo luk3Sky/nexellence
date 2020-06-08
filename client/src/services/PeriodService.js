@@ -1,5 +1,6 @@
 import * as rest from './rest';
 
-let url = "/periods";
+const url = '/periods';
 
-export let findAll = () => rest.get(url);
+// eslint-disable-next-line import/prefer-default-export
+export const findAll = () => rest.get(url);

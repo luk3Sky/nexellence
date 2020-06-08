@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import StudentForm from './StudentForm';
 
-export default class StudentFormWindow extends Component {
+class StudentFormWindow extends Component {
     saveHandler() {
         this.refs.form.save();
     }
 
     render() {
+        const { onCancel, onSaved } = this.props;
         return (
             <div>
                 <div
@@ -20,8 +22,8 @@ export default class StudentFormWindow extends Component {
                                 New Student
                             </h2>
                             <button
-                                type="button"
                                 className="slds-button slds-modal__close"
+                                type="button"
                             >
                                 <svg
                                     aria-hidden="true"
@@ -31,21 +33,21 @@ export default class StudentFormWindow extends Component {
                             </button>
                         </div>
                         <div className="slds-modal__content">
-                            <StudentForm ref="form" onSaved={this.props.onSaved} />
+                            <StudentForm ref="form" onSaved={onSaved} />
                         </div>
 
                         <div className="slds-modal__footer">
                             <button
-                                type="button"
                                 className="slds-button slds-button--neutral"
-                                onClick={this.props.onCancel}
+                                onClick={onCancel}
+                                type="button"
                             >
                                 Cancel
                             </button>
                             <button
-                                type="button"
                                 className="slds-button slds-button--neutral slds-button--brand"
                                 onClick={this.saveHandler}
+                                type="button"
                             >
                                 Save
                             </button>
@@ -57,3 +59,10 @@ export default class StudentFormWindow extends Component {
         );
     }
 }
+
+StudentFormWindow.propTypes = {
+    onCancel: PropTypes.func.isRequired,
+    onSaved: PropTypes.func.isRequired
+};
+
+export default StudentFormWindow;

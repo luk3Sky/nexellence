@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let db = require('./mysqlhelper');
 
@@ -16,7 +16,7 @@ let findAll = (req, res, next) => {
         GROUP BY c.id, t.first_name, t.last_name, p.name
         ORDER BY period_id DESC, code`;
     db.query(sql, periodId ? [periodId] : [])
-        .then(result => res.json(result))
+        .then((result) => res.json(result))
         .catch(next);
 };
 
@@ -34,7 +34,7 @@ let findByTeacher = (req, res, next) => {
         GROUP BY c.id, t.first_name, t.last_name, p.name
         ORDER BY period_id DESC, code`;
     db.query(sql, [parseInt(teacherId)])
-        .then(courses =>  res.json(courses))
+        .then((courses) => res.json(courses))
         .catch(next);
 };
 
@@ -48,7 +48,7 @@ let findById = (req, res, next) => {
         INNER JOIN period as p ON c.period_id=p.id
         WHERE c.id = ?`;
     db.query(sql, [parseInt(id)])
-        .then(courses =>  res.json(courses[0]))
+        .then((courses) => res.json(courses[0]))
         .catch(next);
 };
 
@@ -56,23 +56,36 @@ let createItem = (req, res, next) => {
     let course = req.body;
     let sql = `INSERT INTO course (code, name, period_id, teacher_id, credits)
 			   VALUES (?, ?, ?, ?, ?)`;
-    db.query(sql, [course.code, course.name, course.period_id, course.teacher_id, course.credits])
-        .then(result => res.send({id: result.insertId}))
+    db.query(sql, [
+        course.code,
+        course.name,
+        course.period_id,
+        course.teacher_id,
+        course.credits
+    ])
+        .then((result) => res.send({ id: result.insertId }))
         .catch(next);
 };
 
 let updateItem = (req, res, next) => {
     let course = req.body;
     let sql = `UPDATE course SET code=?, name=?, period_id=?, teacher_id=?, credits=? WHERE id=?`;
-    db.query(sql, [course.code, course.name, course.period_id, course.teacher_id, course.credits, course.id])
-        .then(() => res.send({result: 'ok'}))
+    db.query(sql, [
+        course.code,
+        course.name,
+        course.period_id,
+        course.teacher_id,
+        course.credits,
+        course.id
+    ])
+        .then(() => res.send({ result: 'ok' }))
         .catch(next);
 };
 
 let deleteItem = (req, res, next) => {
     let courseId = req.params.id;
     db.query('DELETE FROM course WHERE id=?', [courseId], true)
-        .then(() => res.send({result: 'ok'}))
+        .then(() => res.send({ result: 'ok' }))
         .catch(next);
 };
 

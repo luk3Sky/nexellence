@@ -1,15 +1,16 @@
 import * as rest from './rest';
 
-let url = "/courses";
+const url = '/courses';
 
-export let findAll = queryParams => rest.get(url, queryParams);
+export const findAll = (queryParams) => rest.get(url, queryParams);
 
-export let findById = id => rest.get(url + "/" + id);
+export const findById = (id) => rest.get(`${url}/${id}`);
 
-export let findByTeacher = (id, queryParams) => rest.get("/teachers/" + id + url, queryParams);
+export const findByTeacher = (id, queryParams) =>
+    rest.get(`/teachers/${id}${url}`, queryParams);
 
-export let createItem = student => rest.post(url, student);
+export const createItem = (student) => rest.post(url, student);
 
-export let updateItem = student => rest.put(url, student);
+export const updateItem = (student) => rest.put(url, student);
 
-export let deleteItem = id => rest.del(url + "/" + id);
+export const deleteItem = (id) => rest.del(`${url}/${id}`);

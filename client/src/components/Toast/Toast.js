@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Icon, ButtonIcon } from '../Icons/Icons';
+import { Icon, ButtonIcon } from 'components/Icons/Icons';
 
 class Toast extends Component {
     constructor(props) {

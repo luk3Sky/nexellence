@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-"use strict";
+'use strict';
 
 let fs = require('fs'),
     path = require('path'),
@@ -7,18 +7,17 @@ let fs = require('fs'),
 
 let filePath = path.join(__dirname, '../mysql.init.sql');
 
-fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
+fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
     if (err) {
         console.error(err);
     } else {
         db.query(data)
-            .then(function() {
-                console.log('MySQL tables successfully initialized') ;
+            .then(function () {
+                console.log('MySQL tables successfully initialized');
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.log('Error initializing MySQL tables');
                 console.error(error);
-            })
+            });
     }
-
 });

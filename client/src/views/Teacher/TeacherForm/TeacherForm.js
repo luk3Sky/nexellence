@@ -1,37 +1,28 @@
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react';
 
-import * as StudentService from '../../services/StudentService';
+import * as TeacherService from 'services/TeacherService';
 
-class StudentForm extends Component {
+export default class TeachForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
-            first_name: '',
-            last_name: '',
-            address: '',
-            city: '',
-            province: '',
-            zip: undefined,
-            mobile_phone: '',
-            phone: '',
-            email: '',
-            dob: undefined
+            ...props.teacher
         };
     }
 
-    componentWillReceiveProps(props) {
-        const { student } = props;
-        this.setState({ ...student });
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillReceiveProps(props) {
+        const { teacher } = props;
+        this.setState({ ...teacher });
     }
 
     save = () => {
         const saveItem = this.state.id
-            ? StudentService.updateItem
-            : StudentService.createItem;
-        saveItem(this.state).then((savedStudent) => {
-            if (this.props.onSaved) this.props.onSaved(savedStudent);
+            ? TeacherService.updateItem
+            : TeacherService.createItem;
+        saveItem(this.state).then((savedTeacher) => {
+            if (this.props.onSaved) this.props.onSaved(savedTeacher);
         });
     };
 
@@ -50,7 +41,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.first_name}
+                                valueLink={this.linkState('first_name')}
                             />
                         </div>
                     </div>
@@ -65,7 +56,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.last_name}
+                                valueLink={this.linkState('last_name')}
                             />
                         </div>
                     </div>
@@ -80,7 +71,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.address}
+                                        valueLink={this.linkState('address')}
                                     />
                                 </label>
                             </div>
@@ -92,7 +83,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.city}
+                                        valueLink={this.linkState('city')}
                                     />
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
@@ -102,7 +93,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.province}
+                                        valueLink={this.linkState('province')}
                                     />
                                 </label>
                                 <label className="slds-form-element__control slds-size--1-of-4">
@@ -112,7 +103,7 @@ class StudentForm extends Component {
                                     <input
                                         className="slds-input"
                                         type="text"
-                                        value={this.state.zip}
+                                        valueLink={this.linkState('zip')}
                                     />
                                 </label>
                             </div>
@@ -131,7 +122,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.mobile_phone}
+                                valueLink={this.linkState('mobile_phone')}
                             />
                         </div>
                     </div>
@@ -146,7 +137,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.phone}
+                                valueLink={this.linkState('phone')}
                             />
                         </div>
                     </div>
@@ -161,7 +152,7 @@ class StudentForm extends Component {
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.email}
+                                valueLink={this.linkState('email')}
                             />
                         </div>
                     </div>
@@ -170,13 +161,13 @@ class StudentForm extends Component {
                             className="slds-form-element__label"
                             htmlFor="sample1"
                         >
-                            Date of Birth
+                            Title
                         </label>
                         <div className="slds-form-element__control">
                             <input
                                 className="slds-input"
                                 type="text"
-                                value={this.state.dob}
+                                valueLink={this.linkState('title')}
                             />
                         </div>
                     </div>
@@ -185,5 +176,3 @@ class StudentForm extends Component {
         );
     }
 }
-
-export default StudentForm;
