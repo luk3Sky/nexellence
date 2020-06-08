@@ -13,6 +13,7 @@ Dockerfile*
 Documentation*
 .gitignore
 .prettierignore
+*.css
 *.min.css
 *.css.map
 .eslintcache
