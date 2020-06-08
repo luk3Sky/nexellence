@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/luk3Sky/nexellence.svg?branch=client-react-dev)](https://travis-ci.org/luk3Sky/nexellence)
 # React University
 
 React University is a sample project demonstrating how to build applications with React, Node.js, and the Lightning Design System. React University is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
