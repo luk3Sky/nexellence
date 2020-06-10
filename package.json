@@ -16,12 +16,14 @@
     "server": "node server.js",
     "dev": "nodemon server.js",
     "install:full": "npm run install:server && npm run install:client",
-    "install:client": "npm install --prefix client",
+    "install:client": "cd client && npm install",
     "install:server": "npm install",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install:full && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install:full && npm run build",
+    "test": "npm run test:client",
+    "test:client": "npm test --prefix client"
   },
   "husky": {
     "hooks": {
