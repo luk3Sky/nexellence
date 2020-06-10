@@ -1,5 +1,4 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -16,40 +15,51 @@ import teacherView from 'views/Teacher/TeacherView';
 import TeacherFormWrapper from 'views/Teacher/TeacherForm/TeacherFormWrapper';
 import StudentHome from './views/StudentHome/StudentHome';
 import Shell from './views/Shell/Shell';
+import './App.css';
 
-function App() {
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <Route path="/" component={Shell}>
-                <Switch>
-                    <Route exact path="/" component={StudentHome} />
-                    <Route exact path="/student" component={StudentRecord}>
-                        <Route path="/:studentId" component={studentView} />
-                        <Route
-                            path="/:studentId/edit"
-                            component={studentFormWrapper}
-                        />
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <Route path="/" component={Shell}>
+                        <Switch>
+                            <Route exact path="/" component={StudentHome} />
+                            <Route exact path="/student" component={StudentRecord}>
+                                <Route path="/:studentId" component={studentView} />
+                                <Route
+                                    path="/:studentId/edit"
+                                    component={studentFormWrapper}
+                                />
+                            </Route>
+                            <Route path="/courses" component={CourseHome} />
+                            <Route path="/course" component={CourseRecord}>
+                                <Route path="/:courseId" component={courseView} />
+                                <Route
+                                    path="/:courseId/edit"
+                                    component={CourseFormWrapper}
+                                />
+                            </Route>
+                            <Route path="/teachers" component={TeacherHome} />
+                            <Route path="/teacher" component={TeacherRecord}>
+                                <Route path="/:teacherId" component={teacherView} />
+                                <Route
+                                    path="/:teacherId/edit"
+                                    component={TeacherFormWrapper}
+                                />
+                            </Route>
+                            <Route path="*" component={StudentHome} />
+                        </Switch>
                     </Route>
-                    <Route path="/courses" component={CourseHome} />
-                    <Route path="/course" component={CourseRecord}>
-                        <Route path="/:courseId" component={courseView} />
-                        <Route path="/:courseId/edit" component={CourseFormWrapper} />
-                    </Route>
-                    <Route path="/teachers" component={TeacherHome} />
-                    <Route path="/teacher" component={TeacherRecord}>
-                        <Route path="/:teacherId" component={teacherView} />
-                        <Route
-                            path="/:teacherId/edit"
-                            component={TeacherFormWrapper}
-                        />
-                    </Route>
-                    <Route path="*" component={StudentHome} />
-                </Switch>
-                </Route>
-            </BrowserRouter>
-        </div>
-    );
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 export default App;
