@@ -5,4 +5,4 @@ services:
     - mysql
 script:
     - npm run heroku-postbuild
-    - npm test
+    - CI=true npm test
