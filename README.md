@@ -2,7 +2,7 @@
 
 # Nexellence 
 
-Nexellence is a smart educational institute managemanet system. It is built with React, Node.js, and the Lightning Design System. Nexellence is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
+Nexellence is a smart educational institute management system. It is built with React, Node.js, and the Lightning Design System. Nexellence is written using ECMAScript 6 on the client and on the server (leveraging the new ES6 support of Node.js 4).
 
 The back-end is built with **Node.js** using a **Postgres** database.
 
