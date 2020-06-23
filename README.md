@@ -10,37 +10,29 @@ Follow the instructions below if you prefer to install the application on your l
 
 1. Install the latest version of [Node.js](https://nodejs.org). This application requires Node.js 4.x.
 
-2. Install and setup [MySQL](https://www.mysql.com/) locally 
+2. Install and setup [MySQL](https://www.mysql.com/) locally .
 
-3. Start MySQL and create a database called **nexcellence**.
+3. (Optional) Start MySQL and create a database called **nexcellence**.
 
 4. Clone this repository or download and unzip [this](https://github.com/luk3Sky/nexellence/archive/master.zip) zip file.
 
 5. Navigate to the **nexcellence** directory and install the project dependencies:
 
     ```
-    npm install
+    npm run install:full
     ```
 
 6. Open **server/config.js** and make sure the **databaseURL** matches your configuration (use your user name)
 
-7. Type the following command to build the client application:
-
-    ```
-    npm run webpack
-    ```
-    
-    The project is written using ECMAScript 6 including ECMAScript 6 modules.
-
-8. Type the following command to start the server:
+7. Type the following command to start the production application (both the front-end and the back-end `concurrently`):
     
     ```
     npm start
     ```
     
-    The database is automatically populated
+    The database is automatically populated with some initial data.
 
-9. Open a browser and access [http://localhost:5000](http://localhost:5000)
+8. Open a browser and access [http://localhost:3000](http://localhost:3000)
 
 ## Developer Environment
 
@@ -48,20 +40,20 @@ The developer environment supports linting, styling with ESLint, Prettier, Husky
 
 Follow the instructions below to run the developer environment:
 
-1. Type the following command to build the developer application:
+1. Type the following command to build the client developer server:
 
     ```
-    npm run webpack:dev
+    npm run client:dev
     ```
     
     The project is written using ECMAScript 6 including ECMAScript 6 modules.
 
-2. Type the following command to start the dev server:
+2. Type the following command to start the backend developer server:
     
     ```
     npm run dev
     ```
     
-3. Open a browser and access [http://localhost:5000](http://localhost:5000)
+3. Open a browser and access the client server on [http://localhost:3000](http://localhost:3000) and the backend REST api can be accessed on [http://localhost:5000](http://localhost:5000)
 
 **Caution! If a git commit fails, please don't force the commit instead of fixing the bug you already have.**
