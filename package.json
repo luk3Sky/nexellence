@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Web Application for an institute management",
   "engines": {
-    "node": "4.2.1"
+    "node": "4.7.0"
   },
   "main": "server.js",
   "scripts": {
