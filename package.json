@@ -22,8 +22,9 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install:full && npm run build",
-    "test": "npm run test:client",
-    "test:client": "npm test --prefix client"
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "npm test --prefix client",
+    "test:server": "mocha"
   },
   "husky": {
     "hooks": {
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cucumber": "^6.0.5",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",

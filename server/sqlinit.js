@@ -15,9 +15,10 @@ fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
             .then(function () {
                 console.log('MySQL tables successfully initialized');
             })
+            // eslint-disable-next-line no-unused-vars
             .catch(function (error) {
                 console.log('Error initializing MySQL tables');
-                console.error(error);
+                // console.error(error);
             });
     }
 });
