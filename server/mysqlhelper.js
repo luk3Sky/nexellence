@@ -1,7 +1,7 @@
 'use strict';
 
 let mysql = require('mysql'),
-    config = require('./config');
+    config = require('./config/config');
 
 const connection = mysql.createConnection(config);
 
@@ -11,6 +11,7 @@ connection.connect(config, function (err) {
     console.log('Connected to the MySQL server.');
 });
 
+// eslint-disable-next-line no-unused-vars
 module.exports.query = function (sql, values, singleItem, dontLog) {
     // if (!dontLog) {
     //     console.log(sql, values);
