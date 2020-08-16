@@ -24,7 +24,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install:full && npm run build",
     "test": "npm run test:client && npm run test:server",
     "test:client": "npm test --prefix client",
-    "test:server": "mocha"
+    "test:server": "mocha --exit"
   },
   "husky": {
     "hooks": {
