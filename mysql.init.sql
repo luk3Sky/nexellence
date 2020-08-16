@@ -62,13 +62,13 @@ CREATE TABLE IF NOT EXISTS enrollment (
 
 CREATE UNIQUE INDEX IF NOT EXISTS indx_enrollment ON enrollment (course_id, student_id);
 
-INSERT INTO period (id, name) VALUES
+INSERT IGNORE INTO period (id, name) VALUES
 (1,'Fall 2019'),
 (2,'Spring 2019'),
 (3,'Fall 2020'),
 (4,'Spring 2020');
 
-INSERT INTO student (first_name, last_name, address, city, province, zip, dob, phone, mobile_phone, email, pic, registration) VALUES
+INSERT IGNORE INTO student (first_name, last_name, address, city, province, zip, dob, phone, mobile_phone, email, pic, registration) VALUES
 ('Camila', 'Martinez', '18 Henry st', 'Cambridge', 'MA', '01742', '1995/09/07', '617-985-6955', '617-666-5555', 'cmartinez@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/camila_martinez.jpg', '2019/07/14'),
 ('Cassandra', 'Bowman', '56 Broad st', 'San Francisco', 'CA', '01742', '1994/12/08', '781-458-8541', '617-987-6543', 'cbowman@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/cassandra_bowman.jpg', '2019/07/14'),
 ('Catherine', 'Hansen', '52 Elm st', 'Boston', 'MA', '01742', '1993/01/02', '404-986-356', '857-584-654', 'chansen@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/catherine_hansen.jpg', '2019/07/14'),
@@ -98,7 +98,7 @@ INSERT INTO student (first_name, last_name, address, city, province, zip, dob, p
 ('Tammy', 'Robinson', '56 Summer st', 'Boston', 'MA', '01742', '1994/01/16', '678-256-3796', '678-354-2282', 'ogreen@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/tammy_robinson.jpg', '2019/07/14'),
 ('Valerie', 'Johnston', '24 Powels st', 'Cambridge', 'MA', '01742', '1995/02/19', '708-654-3214', '708-685-3522', 'vjohnston@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/valerie_johnston.jpg', '2019/07/14');
 
-INSERT INTO teacher (first_name, last_name, address, city, province, zip, title, phone, mobile_phone, email, pic) VALUES
+INSERT IGNORE INTO teacher (first_name, last_name, address, city, province, zip, title, phone, mobile_phone, email, pic) VALUES
 ('Tanya', 'Sharma', '18 Henry st', 'Cambridge', 'MA', '01742', 'PHD', '617-985-6955', '617-666-5555', 'tsharma@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/tanya_sharma.jpg'),
 ('Miriam', 'Aupont', '56 Broad st', 'Cambridge', 'MA', '01742', 'PHD', '617-123-4567', '617-987-6543', 'maupont@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/miriam_aupont.jpg'),
 ('Jonathan', 'Bradley', '52 Elm st', 'Boston', 'MA', '01742', 'PHD', '617-123-4567', '617-987-6543', 'jbradley@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jonathan_bradley.jpg'),
@@ -109,7 +109,7 @@ INSERT INTO teacher (first_name, last_name, address, city, province, zip, title,
 ('Olivia', 'Green', '85 Boylston st', 'Boston', 'MA', '01742', 'PHD', '617-123-4567', '617-987-6543', 'ogreen@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/olivia_green.jpg'),
 ('Michael', 'Jones', '184 Gloucester st', 'Cambridge', 'MA', '01742', 'PHD', '617-985-6955', '617-666-5555', 'mjones@fakemail.com', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michael_jones.jpg');
 
-INSERT INTO course (code, name, teacher_id, period_id, credits) VALUES
+INSERT IGNORE INTO course (code, name, teacher_id, period_id, credits) VALUES
 ('CS101', 'Introduction to Computing', 1, 1, 4),
 ('CS101', 'Introduction to Computing', 1, 2, 4),
 ('CS101', 'Introduction to Computing', 2, 3, 4),
@@ -135,7 +135,7 @@ INSERT INTO course (code, name, teacher_id, period_id, credits) VALUES
 ('CS121', 'Introduction to Salesforce', 1, 1, 4),
 ('CS121', 'Introduction to Salesforce', 1, 2, 4);
 
-INSERT INTO enrollment (student_id, course_id) VALUES (1,1),(1,5),(1,9),(1,13),(1,17),(1,21),(2,2),(2,6),(2,10),(2,14),(2,18),(2,22),(3,3),(3,7),(3,11),(3,15),(3,19),(3,23),(4,4),(4,8),(4,12),
+INSERT IGNORE INTO enrollment (student_id, course_id) VALUES (1,1),(1,5),(1,9),(1,13),(1,17),(1,21),(2,2),(2,6),(2,10),(2,14),(2,18),(2,22),(3,3),(3,7),(3,11),(3,15),(3,19),(3,23),(4,4),(4,8),(4,12),
 (4,16),(4,20),(5,24),(5,1),(5,5),(5,9),(5,13),(5,17),(5,21),(6,2),(6,6),(6,10),(6,14),(6,18),(6,22),(7,3),(7,7),(7,11),(7,15),(7,19),(7,23),(8,4),(8,8),(8,12),(8,16),(8,20),(8,24),(9,24),(9,1),
 (9,5),(9,9),(9,13),(9,17),(9,21),(10,2),(10,6),(10,10),(10,14),(10,18),(10,22),(11,3),(11,7),(11,11),(11,15),(11,19),(11,23),(12,4),(12,8),(12,12),(12,16),(12,20),(12,24),(13,1),(13,5),(13,9),
 (13,13),(13,17),(13,21),(14,2),(14,6),(14,10),(14,14),(14,18),(14,22),(15,3),(15,7),(15,11),(15,15),(15,19),(15,23),(16,4),(16,8),(16,12),(16,16),(17,20),(17,24),(17,1),(17,5),(17,9),(17,13),
