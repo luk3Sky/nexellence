@@ -1,6 +1,6 @@
 'use strict';
 
-let db = require('./mysqlhelper');
+let db = require('../mysqlhelper');
 
 let findByStudent = (req, res, next) => {
     let studentId = req.params.id;

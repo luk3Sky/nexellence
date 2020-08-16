@@ -1,6 +1,6 @@
 'use strict';
 
-let db = require('./mysqlhelper');
+let db = require('../mysqlhelper');
 
 let findAll = (req, res, next) => {
     let periodId = req.query.periodId;
