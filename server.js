@@ -4,6 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
     compression = require('compression'),
+    logger = require('morgan'),
     students = require('./server/students'),
     courses = require('./server/courses'),
     enrollments = require('./server/enrollments'),
@@ -15,6 +16,7 @@ var express = require('express'),
 app.set('port', process.env.PORT || 5000);
 
 app.use(cors());
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(compression());
 
