@@ -21,25 +21,25 @@ describe('/GET teachers', () => {
 });
 
 describe('/GET teachers/:id', () => {
-  it('it should Get a teacher by teacherId', (done) => {
-      chai.request('http://localhost:5000')
-          .get('/teachers/'+SAMPLE_TEACHER_ID)
-          .end((err, res) => {
-              res.should.have.status(200);
-              res.body.should.be.a('object');
-              done();
-          });
-  });
+    it('it should Get a teacher by teacherId', (done) => {
+        chai.request('http://localhost:5000')
+            .get('/teachers/' + SAMPLE_TEACHER_ID)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                done();
+            });
+    });
 });
 
 describe('/GET teachers:id/courses', () => {
-  it('it should Get courses by teacherId', (done) => {
-      chai.request('http://localhost:5000')
-          .get('/teachers/'+SAMPLE_TEACHER_ID+'/courses')
-          .end((err, res) => {
-              res.should.have.status(200);
-              res.body.should.be.a('array');
-              done();
-          });
-  });
+    it('it should Get courses by teacherId', (done) => {
+        chai.request('http://localhost:5000')
+            .get('/teachers/' + SAMPLE_TEACHER_ID + '/courses')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                done();
+            });
+    });
 });
