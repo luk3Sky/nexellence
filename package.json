@@ -38,7 +38,7 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "body-parser": "^1.14.2",
-    "compression": "^1.6.1",
+    "compression": "^1.8.1",
     "express": "^4.13.4",
     "method-override": "^2.3.5",
     "moment": "^2.11.2",
