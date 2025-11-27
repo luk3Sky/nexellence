@@ -46,7 +46,7 @@
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
     "pg": "^4.4.4",
-    "react-scripts": "^3.4.0"
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
